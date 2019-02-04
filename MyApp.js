@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import {
   Body,
   connectStyle,
@@ -7,7 +7,8 @@ import {
   Container,
   Header,
   Left,
-  Text,
+  Text
+     , Card, CardItem
 } from 'native-base';
 import { STYLE_NAME } from './MyApp.style'
 import { HorizontalMenu } from './components/HorizontalMenu';
@@ -18,17 +19,27 @@ class MyAppWithoutStyles extends React.Component {
   render() {
     return (
         <Container>
-            <Header>
-              <HorizontalMenu buttonsArray={buttonsArray} />
-            </Header>
-            <Body>
-              <Left>
-                <VerticalMenu buttonsArray={buttonsArray} />
-              </Left>
-              <Content>
-                <Text>content</Text>
-              </Content>
-            </Body>
+            <Header />
+            <Content padder>
+                <TouchableOpacity
+                    onPress={() => alert("This is Card Header")}>
+                <Card>
+                    <CardItem header button >
+                        <Text>NativeBase</Text>
+                    </CardItem>
+                    <CardItem button >
+                        <Body>
+                        <Text>
+                            Click on any carditem
+                        </Text>
+                        </Body>
+                    </CardItem>
+                    <CardItem footer button >
+                        <Text>GeekyAnts</Text>
+                    </CardItem>
+                </Card>
+                </TouchableOpacity>
+            </Content>
         </Container>
     );
   }
